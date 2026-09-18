@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Design tokens
+ *
+ * Tailwind v4 es CSS-first: lo que se declara acá dentro de `@theme` genera
+ * utilidades automáticamente (`bg-surface`, `text-ink-soft`, `border-line`,
+ * `shadow-card`, etc.). No hace falta `tailwind.config.js`.
+ * ------------------------------------------------------------------------- */
+@theme {
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+
+  /* Superficies y texto */
+  --color-surface: #fafafa;
+  --color-card: #ffffff;
+  --color-ink: #141414;
+  --color-ink-soft: #6b6b6b;
+  --color-line: #e5e5e5;
+
+  /* Acento primario · avisos "busco músico" */
+  --color-busco: #1db954;
+  --color-busco-soft: #eaf8ef;
+
+  /* Acento secundario · avisos "me ofrezco" */
+  --color-ofrezco: #7c5cff;
+  --color-ofrezco-soft: #f0ecff;
+
+  /* Estados */
+  --color-danger: #d64545;
+  --color-danger-soft: #fdecec;
+
+  /* Sombra sutil de las cards */
+  --shadow-card:
+    0 1px 2px rgba(20, 20, 20, 0.04), 0 1px 3px rgba(20, 20, 20, 0.05);
+  --shadow-card-hover:
+    0 2px 4px rgba(20, 20, 20, 0.05), 0 8px 24px rgba(20, 20, 20, 0.07);
+}
+
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Títulos en Semibold, como pide el sistema tipográfico. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-busco) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Utilidades propias
+ * ------------------------------------------------------------------------- */
+
+/* Oculta la flecha nativa de los <select> para poder dibujar la nuestra. */
+@utility select-reset {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
