@@ -22,15 +22,12 @@ type Props = {
 
 const DEBOUNCE_MS = 350;
 
-export function AvisosFiltros({ valores, ubicaciones, total }: Props) {
+export function AvisosFiltros({ valores, total }: Props) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
   const [busqueda, setBusqueda] = useState(valores.q ?? "");
 
-  // Si la URL cambia desde afuera (back/forward, "limpiar filtros"), se
-  // resincroniza el input durante el render. Es el patrón recomendado por
-  // React para ajustar estado cuando cambia una prop, en vez de un useEffect.
   const [qSincronizado, setQSincronizado] = useState(valores.q ?? "");
   if (qSincronizado !== (valores.q ?? "")) {
     setQSincronizado(valores.q ?? "");
@@ -44,9 +41,6 @@ export function AvisosFiltros({ valores, ubicaciones, total }: Props) {
       valores.ubicacion ||
       valores.q,
   );
-
-  console.log({valores})
-  console.log({isPending})
 
   /** Arma la URL solo con los campos que tienen valor y navega. */
   function aplicar(form: HTMLFormElement | null) {
@@ -172,17 +166,11 @@ export function AvisosFiltros({ valores, ubicaciones, total }: Props) {
         <div className="sm:col-span-2 lg:col-span-4">
           <Input
             name="ubicacion"
-            list="filtro-ubicaciones"
             defaultValue={valores.ubicacion ?? ""}
             placeholder="Ciudad o zona (ej: Rosario, Zona Oeste…)"
             aria-label="Filtrar por ubicación"
             onBlur={() => aplicar(formRef.current)}
           />
-          <datalist id="filtro-ubicaciones">
-            {ubicaciones.map((ubicacion) => (
-              <option key={ubicacion} value={ubicacion} />
-            ))}
-          </datalist>
         </div>
       </div>
 

@@ -180,32 +180,32 @@ export default async function AvisoPage({ params, searchParams }: Props) {
               {aviso.titulo}
             </h1>
 
-            <dl className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-sm text-ink-soft">
               <div className="flex items-center gap-1.5">
                 <Music2 aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                <dt className="sr-only">Instrumento</dt>
-                <dd className="font-medium text-ink">{aviso.instrumento}</dd>
+                <div className="sr-only">Instrumento</div>
+                <div className="font-medium text-ink">{aviso.instrumento}</div>
               </div>
               <div className="flex items-center gap-1.5">
                 <Tag aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                <dt className="sr-only">Género</dt>
-                <dd>{aviso.genero_musical}</dd>
+                <div className="sr-only">Género</div>
+                <div>{aviso.genero_musical}</div>
               </div>
               <div className="flex items-center gap-1.5">
                 <MapPin aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                <dt className="sr-only">Ubicación</dt>
-                <dd>{aviso.ubicacion}</dd>
+                <div className="sr-only">Ubicación</div>
+                <div>{aviso.ubicacion}</div>
               </div>
               <div className="flex items-center gap-1.5">
                 <CalendarDays aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                <dt className="sr-only">Publicado</dt>
-                <dd>
+                <div className="sr-only">Publicado</div>
+                <div>
                   <time dateTime={aviso.created_at}>
                     {formatearFecha(aviso.created_at)}
                   </time>
-                </dd>
+                </div>
               </div>
-            </dl>
+            </div>
 
             <div className="mt-8 border-t border-line pt-8">
               <p className="text-base leading-relaxed whitespace-pre-line text-ink">

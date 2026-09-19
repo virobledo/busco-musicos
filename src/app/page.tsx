@@ -21,14 +21,14 @@ type Props = {
 function Hero() {
   return (
     <div className="border-b border-line bg-card">
-      <Container className="py-10 sm:py-20">
+      <Container className="py-10 sm:py-14">
         <div className="max-w-2xl">
           <h1 className="text-4xl leading-[1.1] font-semibold tracking-tight text-ink sm:text-5xl">
             Encontrá con quién tocar.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-            Avisos de bandas que buscan músicos y de músicos que se ofrecen.
-            Filtrá por instrumento, género y zona; publicá el tuyo en dos minutos.
+            Clasificados de bandas que buscan músicos y de músicos que se ofrecen.
+            Publicá el tuyo en dos minutos.
           </p>
           {/* <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/avisos/nuevo" className={buttonStyles({ size: "lg" })}>
